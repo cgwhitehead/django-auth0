@@ -121,6 +121,30 @@ set ``AUTH0_CALLBACK_URL`` to your custom view it should be url name.
 
 `Sample application`_ is at https://github.com/imanhodjaev/auth0-sample
 
+USING DJANGO @login_required decorators
+--------
+The @login_required decorator uses the next parameter so that you can have a dynamic login URL. If you modify the lock javascript so that the callback url includes the next parameter, you can take advantage of this Django feature using this library.
+If no next parameter is included, the callback will redirect to your success url.
+
+Sample modal lock javascript:
+```
+var authredirect = '{{ AUTH0_CALLBACK_URL}}' + location.search;
+var lock = new Auth0Lock('{{ AUTH0_CLIENT_ID }}', '{{ AUTH0_DOMAIN }}', {
+  auth: {
+    redirectUrl: authredirect,
+    responseType: 'code',
+    params: {
+      scope: 'openid profile'
+    }
+  },
+  rememberLastLogin: true,
+  theme: {
+    primaryColor: '#3884FF',
+  }
+});
+lock.show();
+```
+
 TODO
 --------
 

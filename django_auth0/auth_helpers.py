@@ -42,6 +42,10 @@ def process_login(request):
 
     if user:
         login(request, user)
-        return redirect(config['AUTH0_SUCCESS_URL'])
+        if 'next' in request.GET:
+            redirect_to_url=request.GET['next']
+            return redirect(redirect_to_url)
+        else:
+            return redirect(config['AUTH0_SUCCESS_URL'])
 
     return HttpResponse(status=400)
