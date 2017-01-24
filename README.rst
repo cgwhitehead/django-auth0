@@ -127,23 +127,23 @@ The @login_required decorator uses the next parameter so that you can have a dyn
 If no next parameter is included, the callback will redirect to your success url.
 
 Sample modal lock javascript:
-```
-var authredirect = '{{ AUTH0_CALLBACK_URL}}' + location.search;
-var lock = new Auth0Lock('{{ AUTH0_CLIENT_ID }}', '{{ AUTH0_DOMAIN }}', {
-  auth: {
-    redirectUrl: authredirect,
-    responseType: 'code',
-    params: {
-      scope: 'openid profile'
+.. code-block::javascript
+
+    var authredirect = '{{ AUTH0_CALLBACK_URL}}' + location.search;
+    var lock = new Auth0Lock('{{ AUTH0_CLIENT_ID }}', '{{ AUTH0_DOMAIN }}', {
+     auth: {
+        redirectUrl: authredirect,
+        responseType: 'code',
+        params: {
+         scope: 'openid profile'
+        }
+    },
+    rememberLastLogin: true,
+    theme: {
+     primaryColor: '#3884FF',
     }
-  },
-  rememberLastLogin: true,
-  theme: {
-    primaryColor: '#3884FF',
-  }
-});
-lock.show();
-```
+    });
+    lock.show();
 
 TODO
 --------
