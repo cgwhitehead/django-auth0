@@ -127,7 +127,6 @@ The @login_required decorator uses the next parameter so that you can have a dyn
 If no next parameter is included, the callback will redirect to your success url.
 
 Sample modal lock javascript:
-.. code-block::javascript
 
     var authredirect = '{{ AUTH0_CALLBACK_URL}}' + location.search;
     var lock = new Auth0Lock('{{ AUTH0_CLIENT_ID }}', '{{ AUTH0_DOMAIN }}', {
